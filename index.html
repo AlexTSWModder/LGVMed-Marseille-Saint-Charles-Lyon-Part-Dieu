@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>LGV Marseille – Lyon | TSW6</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0f0f0f;
+            color: #e0e0e0;
+        }
+
+        header {
+            background: linear-gradient(90deg, #1b1b1b, #2a2a2a);
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        header p {
+            margin-top: 10px;
+            color: #b0b0b0;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .update {
+            background-color: #1a1a1a;
+            border-left: 5px solid #4caf50;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        .update h2 {
+            margin-top: 0;
+        }
+
+        .date {
+            font-size: 0.85em;
+            color: #9e9e9e;
+            margin-bottom: 10px;
+        }
+
+        .update ul {
+            padding-left: 20px;
+        }
+
+        .update img {
+            margin-top: 15px;
+            max-width: 100%;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8em;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>LGV Marseille – Lyon</h1>
+        <p>Projet de ligne grande vitesse sur Train Sim World 6</p>
+    </header>
+
+    <main id="updates-container">
+        <!-- Les mises à jour sont injectées ici -->
+    </main>
+
+    <footer>
+        © LGV Marseille – Lyon • TSW6
+    </footer>
+
+    <script>
+        fetch('data/updates.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Impossible de charger updates.json');
+                }
+                return response.json();
+            })
+            .then(updates => {
+                const container = document.getElementById('updates-container');
+
+                updates
+                    .sort((a, b) => new Date(b.date) - new Date(a.date))
+                    .forEach(update => {
+
+                        const block = document.createElement('div');
+                        block.className = 'update';
+
+                        block.innerHTML = `
+                    <h2>${update.title}</h2>
+                    <div class="date">${update.date}</div>
+                    <p>${update.description}</p>
+
+                    ${update.changelog && update.changelog.length ? `
+                        <h4>Changelog</h4>
+                        <ul>
+                            ${update.changelog.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                    ` : ''}
+
+                    ${update.images && update.images.length ? `
+                        ${update.images.map(img => `<img src="${img}" alt="Capture du projet">`).join('')}
+                    ` : ''}
+                `;
+
+                        container.appendChild(block);
+                    });
+            })
+            .catch(error => {
+                document.getElementById('updates-container').innerHTML =
+                    '<p>Erreur lors du chargement des mises à jour.</p>';
+                console.error(error);
+            });
+    </script>
+
+</body>
+
+</html>
