@@ -1,0 +1,25 @@
+[
+    {
+        "title": "Début du projet",
+        "date": "2025-01-10",
+        "description": "Initialisation de la ligne LGV Marseille – Lyon dans TSWPCEditor.",
+        "changelog": [
+            "Création du tracé principal",
+            "Placement initial des gares"
+        ],
+        "images": [
+            "assets/images/debut-projet.png"
+        ]
+    },
+    {
+        "title": "TEST",
+        "description": "TEST",
+        "changelog": [
+            "TEST"
+        ],
+        "images": [
+            "images/image.jpg"
+        ],
+        "date": "2025-12-18"
+    }
+]
