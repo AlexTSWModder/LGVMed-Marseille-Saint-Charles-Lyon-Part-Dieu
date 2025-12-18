@@ -1,24 +1,15 @@
 [
     {
-        "title": "Début du projet",
-        "date": "2025-01-10",
-        "description": "Initialisation de la ligne LGV Marseille – Lyon dans TSWPCEditor.",
+        "title": "Démarrage du projet - LGV Med Marseille Saint-Charles - Lyon Part-Dieu",
+        "description": "Lancement du projet, les données de terrain sont prêtes et déja importer dans Unreal Engine 4, je commence la pose des premiers rails.",
         "changelog": [
-            "Création du tracé principal",
-            "Placement initial des gares"
+            "Démarrage projet.",
+            "Chargement des données de terrain.",
+            "Réglage de UE4 pour coller au normes Française férrovaires.",
+            "Pose des premiers rails et premiers aiguillages."
         ],
         "images": [
-            "assets/images/debut-projet.png"
-        ]
-    },
-    {
-        "title": "TEST",
-        "description": "TEST",
-        "changelog": [
-            "TEST"
-        ],
-        "images": [
-            "images/image.jpg"
+            "images/PoseRails1.png"
         ],
         "date": "2025-12-18"
     }
